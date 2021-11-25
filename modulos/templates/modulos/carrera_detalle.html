@@ -1,0 +1,12 @@
+{% extends 'modulos/base.html' %}
+
+{% block content %}
+    <div class="post">
+        {% if publicacion.nombre %}
+            
+            {% endif %}
+            <a class = "button is-primary is-rounded" href="{% url 'carrera_editar' pk=publicacion.pk %}">Editar</a>
+            <a class = "button is-primary is-rounded" href="{% url 'carrera_borrar' pk=publicacion.pk %}">Borrar</a>
+        <h2>{{ publicacion.nombre }}</h2>
+    </div>
+{% endblock %}
