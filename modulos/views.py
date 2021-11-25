@@ -4,13 +4,10 @@ from .forms import CarreraForm
 from .models import Carreras
 
 def menu(request):
-    
     return render(request,'modulos/menu.html', )
-
-
+    
 def area_lista(request):
     return render(request,'modulos/area_lista.html',) 
-
 def carreras_lista(request):
     publicaciones = Carreras.objects.all()
     return render(request,'modulos/carreras_lista.html', {'publicaciones': publicaciones})
