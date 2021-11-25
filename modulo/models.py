@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-
 class Area(models.Model):
     autor = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     titulo = models.CharField(max_length=200)
@@ -18,3 +17,9 @@ class Area(models.Model):
 
     #def __str__(self):
     ##    return self.title
+
+class Carreras (models.Model):
+    nombre = models.CharField(max_length=200)
+    def __str__(self):
+       return self.nombre
+
