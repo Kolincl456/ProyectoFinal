@@ -1,6 +1,7 @@
 from django.contrib import messages
+from django.utils import timezone
 from django.shortcuts import get_object_or_404, redirect, render
-from .forms import CarreraForm
+from .forms import CarreraForm, AreaForm
 from .models import Carreras, Area
 
 def menu(request):
@@ -9,6 +10,26 @@ def menu(request):
 def area_lista(request):
     publicaciones = Area.objects.all()
     return render(request,'modulos/area_lista.html', {'publicaciones': publicaciones})
+
+def area_detalle(request,pk):
+    publicacion = get_object_or_404(Area, pk = pk)
+    return render(request,'modulos/area_detalle.html', {'publicacion': publicacion})
+
+def area_nueva(request):
+    if request.method == "POST":
+        formulario = AreaForm(request.POST)
+        if formulario.is_valid():
+            publicacion = formulario.save(commit=False)
+            publicacion.autor = request.user
+            publicacion.fecha_publicacion = timezone.now()
+            publicacion.fecha_creacion = timezone.now()
+            publicacion.save()
+            messages.add_message(request, messages.SUCCESS, 'Area Guardada Exitosamente')
+            publicaciones = Area.objects.all()
+            return render(request,'modulos/area_lista.html', {'publicaciones': publicaciones})
+    else:
+         formulario = AreaForm()
+    return render(request,'modulos/area_nueva.html', {'formulario': formulario})
      
 def carreras_lista(request):
     publicaciones = Carreras.objects.all()

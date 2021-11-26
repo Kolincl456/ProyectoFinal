@@ -1,6 +1,6 @@
 {% extends 'modulos/base.html' %}
 {% block content %}
-    <h2><a  href="{% url 'carrera_nueva' %}">crear</a></h2>
+    <h2><a  href="{% url 'area_nueva' %}">crear</a></h2>
     {% for publicacion in publicaciones %}
         <div class="post">
             <td>{{ publicacion.autor }}</td><br>
@@ -9,7 +9,7 @@
             <td>{{ publicacion.descripcion }}</td><br>
             <td>{{ publicacion.fecha_creacion }}</td><br>
             <td>{{ publicacion.fecha_publicacion }}</td><br>
-            <h2><a href="{% url 'carrera_detalle' pk=publicacion.pk %}">Detalles</a></h2>
+            <h2><a href="{% url 'area_detalle' pk=publicacion.pk %}">Detalles</a></h2>
         </div>
     {% endfor %}
 {% endblock %}

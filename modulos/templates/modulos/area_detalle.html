@@ -1,0 +1,16 @@
+{% extends 'modulos/base.html' %}
+{% block content %}
+    <div class="post">
+        {% if publicacion.nombre %}
+            {% endif %}
+            <a class = "button is-primary is-rounded" href="">Editar</a>
+            <a class = "button is-primary is-rounded" href="">Borrar</a>
+            <br>
+            <td>{{ publicacion.autor }}</td><br>
+            <td>{{ publicacion.titulo }}</td><br>
+            <td>{{ publicacion.nombre }}</td><br>
+            <td>{{ publicacion.descripcion }}</td><br>
+            <td>{{ publicacion.fecha_creacion }}</td><br>
+            <td>{{ publicacion.fecha_publicacion }}</td><br>
+    </div>
+{% endblock %}
