@@ -3,8 +3,8 @@
     <div class="post">
         {% if publicacion.nombre %}
             {% endif %}
-            <a class = "button is-primary is-rounded" href="">Editar</a>
-            <a class = "button is-primary is-rounded" href="">Borrar</a>
+            <a class = "button is-primary is-rounded" href="{% url 'area_editar' pk=publicacion.pk %}">Editar</a>
+            <a class = "button is-primary is-rounded" href="{% url 'area_borrar' pk=publicacion.pk %}">Borrar</a>
             <br>
             <td>{{ publicacion.autor }}</td><br>
             <td>{{ publicacion.titulo }}</td><br>

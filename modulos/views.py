@@ -30,7 +30,29 @@ def area_nueva(request):
     else:
          formulario = AreaForm()
     return render(request,'modulos/area_nueva.html', {'formulario': formulario})
-     
+
+def area_editar(request,pk):
+    publicaciones = get_object_or_404(Area, pk = pk)
+    if request.method =="POST":
+        formulario = AreaForm(request.POST, instance=publicaciones)
+        if formulario.is_valid():
+            publicaciones = formulario.save(commit=False)
+            publicaciones.autor = request.user
+            publicaciones.fecha_publicacion = timezone.now()
+            publicaciones.fecha_creacion = timezone.now()
+            publicaciones.save()
+            publicaciones = Area.objects.all()
+            return render(request,'modulos/area_lista.html', {'publicaciones': publicaciones})
+    else:
+        formulario = AreaForm(instance=publicaciones)
+    return render(request,'modulos/area_editar.html', {'formulario': formulario})
+
+def area_borrar(request,pk):
+    publicacion = get_object_or_404(Area, pk=pk)
+    publicacion.delete()
+    publicaciones = Area.objects.all()
+    return render(request,'modulos/area_lista.html', {'publicaciones': publicaciones})
+
 def carreras_lista(request):
     publicaciones = Carreras.objects.all()
     return render(request,'modulos/carreras_lista.html', {'publicaciones': publicaciones})
@@ -59,7 +81,6 @@ def carrera_editar(request,pk):
         if formulario.is_valid():
             publicaciones = formulario.save(commit=False)
             publicaciones.save()
-            publicaciones = Carreras.objects.all()
             publicaciones = Carreras.objects.all()
             return render(request,'modulos/carreras_lista.html', {'publicaciones': publicaciones})
     else:
