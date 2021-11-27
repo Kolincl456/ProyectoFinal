@@ -15,3 +15,8 @@ class ElementoForm(forms.ModelForm):
     class Meta:
         model = Elementos
         fields = ('nombre',)
+
+class SectorForm(forms.ModelForm):
+    class Meta:
+        model= Sector
+        fields=('nombre',)

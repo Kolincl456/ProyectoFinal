@@ -18,4 +18,10 @@ urlpatterns = [
     path('elementos/<int:pk>/editar/', views.elementos_editar, name ='elementos_editar'),
     path('elementos/<int:pk>', views.elementos_detalle, name ='elementos_detalle'),
     path('elementos/<pk>/borrar/', views.elementos_borrar, name ='elementos_borrar'),
+    path('sector/listar', views.sectores, name='sectores'),
+    path('sector/nuevo', views.sector_nuevo, name='sector_nuevo'),
+    path('sector/<int:pk>/detalle', views.sector_detalle, name='sector_detalle'),
+    path('sector/<int:pk>/editar', views.sector_editar,name='sector_editar'),
+    path('sector/<pk>/publicar/',views.sector_publicar,name='sector_publicar'),
+    path('sector/<pk>/borrar/', views.sector_borrar, name='sector_borrar'),
     ]

@@ -1,0 +1,12 @@
+{% extends 'modulos/base.html' %}
+{% block content %}
+<div class="">
+   
+    {% if user.is_authenticated %}
+    <a class="button is-primary is-rounded" href= "{% url 'sector_editar' pk=sector.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+    <a class="button is-primary is-rounded" href= "{% url 'sector_borrar' pk=sector.pk %}"><span class="fa fa-eraser"></span></a>
+    {% endif %}
+
+    <h2>{{sector.nombre}}</h2>
+</div>
+{% endblock %}

@@ -30,3 +30,17 @@ class Elementos(models.Model):
 
     def __str__(self):
         return self.nombre
+
+class Sector(models.Model):
+    
+    nombre = models.CharField(max_length=200)
+
+    def publicar(self):
+        self.save()
+
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+            verbose_name_plural='Sectores'
