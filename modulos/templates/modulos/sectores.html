@@ -1,9 +1,9 @@
 {% extends 'modulos/base.html' %}
 {% block content %}
+        <h2><a  href="{% url 'sector_nuevo' %}">crear</a></h2>
         {% for sector in sectores %}
             <div class="">
                 <h2><a href= "{% url 'sector_detalle' pk=sector.pk %}">{{ sector.nombre }}</a></h2>
-                
             </div>
         {% endfor %}
  {% endblock %}

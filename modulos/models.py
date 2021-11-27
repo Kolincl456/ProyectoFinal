@@ -22,9 +22,6 @@ class Area(models.Model):
         self.fecha_publicacion = timezone.now()
         self.save()
 
-    #def __str__(self):
-    ##    return self.title
-
 class Elementos(models.Model):
     nombre  =   models.CharField(max_length=150)
 

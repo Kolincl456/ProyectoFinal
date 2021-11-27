@@ -9,7 +9,7 @@ class CarreraForm(forms.ModelForm):
 class AreaForm(forms.ModelForm):
     class Meta:
         model = Area
-        fields = ('titul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o', 'nombre', 'descripcion', )
+        fields = ('titulo', 'nombre', 'descripcion', )
     
 class ElementoForm(forms.ModelForm):
     class Meta:
