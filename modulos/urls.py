@@ -13,4 +13,9 @@ urlpatterns = [
     path('area/nueva/', views.area_nueva, name='area_nueva'),
     path('area/<int:pk>/editar/', views.area_editar, name ='area_editar'),
     path('area/<pk>/borrar/', views.area_borrar, name ='area_borrar'),
+    path('elementos/listar', views.elementos_lista, name ='elementos_lista'),
+    path('elementos/nueva/', views.elementos_nueva, name='elementos_nueva'),
+    path('elementos/<int:pk>/editar/', views.elementos_editar, name ='elementos_editar'),
+    path('elementos/<int:pk>', views.elementos_detalle, name ='elementos_detalle'),
+    path('elementos/<pk>/borrar/', views.elementos_borrar, name ='elementos_borrar'),
     ]

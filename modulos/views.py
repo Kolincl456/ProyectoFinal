@@ -1,8 +1,8 @@
 from django.contrib import messages
 from django.utils import timezone
 from django.shortcuts import get_object_or_404, redirect, render
-from .forms import CarreraForm, AreaForm
-from .models import Carreras, Area
+from .forms import CarreraForm, AreaForm, ElementoForm
+from .models import Carreras, Area, Elementos
 
 def menu(request):
     return render(request,'modulos/menu.html', )
@@ -93,3 +93,45 @@ def carrera_borrar(request,pk):
     publicacion.delete()
     publicaciones = Carreras.objects.all()
     return render(request,'modulos/carreras_lista.html', {'publicaciones': publicaciones})
+
+def elementos_lista(request):
+    publicaciones = Elementos.objects.all()
+    return render(request,'modulos/elementos_lista.html', {'publicaciones': publicaciones})
+
+def elementos_nueva(request):
+    if request.method == "POST":
+        formulario = ElementoForm(request.POST)
+        if formulario.is_valid():
+            publicacion = formulario.save(commit=False)
+            publicacion.save()
+            messages.add_message(request, messages.SUCCESS, 'Elemento Guardada Exitosamente')
+            publicaciones = Elementos.objects.all()
+            return render(request,'modulos/elementos_lista.html', {'publicaciones': publicaciones})
+    else:
+         formulario = ElementoForm()
+    return render(request,'modulos/elementos_nueva.html', {'formulario': formulario})
+
+def elementos_detalle(request,pk):
+    publicacion = get_object_or_404(Elementos, pk = pk)
+    return render(request,'modulos/elementos_detalle.html', {'publicacion': publicacion})
+
+def elementos_editar(request,pk):
+    publicaciones = get_object_or_404(Elementos, pk = pk)
+    if request.method =="POST":
+        formulario = ElementoForm(request.POST, instance=publicaciones)
+        if formulario.is_valid():
+            publicaciones = formulario.save(commit=False)
+            publicaciones.save()
+            publicaciones = Elementos.objects.all()
+            publicaciones = Elementos.objects.all()
+            return render(request,'modulos/elementos_lista.html', {'publicaciones': publicaciones})
+    else:
+        formulario = ElementoForm(instance=publicaciones)
+    
+    return render(request,'modulos/elementos_editar.html', {'formulario': formulario})
+
+def elementos_borrar(request,pk):
+    publicacion = get_object_or_404(Elementos, pk=pk)
+    publicacion.delete()
+    publicaciones = Elementos.objects.all()
+    return render(request,'modulos/elementos_lista.html', {'publicaciones': publicaciones})
