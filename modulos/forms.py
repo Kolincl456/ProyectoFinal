@@ -1,5 +1,5 @@
 from django import forms
-from .models import Carreras, Area, Elementos
+from .models import Carreras, Area, Elementos, Sector
 
 class CarreraForm(forms.ModelForm):
     class Meta:
@@ -9,7 +9,7 @@ class CarreraForm(forms.ModelForm):
 class AreaForm(forms.ModelForm):
     class Meta:
         model = Area
-        fields = ('titulo', 'nombre', 'descripcion', )
+        fields = ('titul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o', 'nombre', 'descripcion', )
     
 class ElementoForm(forms.ModelForm):
     class Meta:
